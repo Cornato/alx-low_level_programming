@@ -15,7 +15,7 @@ int main(void)
 	{
 		for (bb = '0'; bb <= '8'; bb++)
 		{
-			for (cc = '0'; cc <= '9'; c++)
+			for (cc = '0'; cc <= '9'; cc++)
 			{
 				if (aa < bb && bb <= cc && aa != bb && bb != cc)
 				{
