@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	int num1, num2, Sum, Contuer;
+	long num1, num2, Sum, Contuer;
 
 	num1 = 0;
 	num2 = 1;
@@ -16,9 +16,9 @@ int main(void)
 		num1 = num2;
 		num2 = Sum;
 		if (Contuer != 49)
-			printf("%d, ", Sum);
+			printf("%ld, ", Sum);
 		else
-			printf("%d\n", Sum);
+			printf("%ld\n", Sum);
 	}
 	return (0);
 }
