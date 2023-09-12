@@ -16,9 +16,9 @@ int main(void)
 		num1 = num2;
 		num2 = Sum;
 		if (Contuer != 49)
-			printf("%ld, ", Sum);
+			printf("%d, ", Sum);
 		else
-			printf("%ld\n", Sum);
+			printf("%d\n", Sum);
 	}
 	return (0);
 }
