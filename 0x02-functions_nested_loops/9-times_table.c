@@ -6,27 +6,31 @@
  */
 void times_table(void)
 {
-	for (int i = 0; i < 10; i++)
-	{
-	for (int b = 0; b < 10; b++)
-	{
-	int c = i * b;
+	int Time1;
+	int Time2;
+	int Result;
 
-	if (c > 9)
+	for (Time1 = 0; Time1 < 10; Time1++)
+	{
+	for (Time2 = 0; Time2 < 10; Time2++)
+	{
+	Result = Time1 * Time2;
+
+	if (Result > 9)
 	{
 	_putchar(c / 10 + '0');
 	_putchar(c % 10 + '0');
 	}
-	else if (b != 0)
+	else if (Time2 != 0)
 	{
 	_putchar(' ');
-	_putchar(c + '0');
+	_putchar(Result + '0');
 	}
 	else
 	{
-	_putchar(c + '0');
+	_putchar(Result + '0');
 	}
-	if (b != 9)
+	if (Time2 != 9)
 	{
 	_putchar(',');
 	_putchar(' ');
