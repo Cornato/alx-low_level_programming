@@ -7,11 +7,9 @@
  */
 int _abs(int n)
 {
-	if (n > -1)
+	if (n < 0)
 		_putchar(n);
 	else if (n == 0)
-		_putchar(n);
-	else if (n == -98)
 		_putchar(n);
 	else
 		_putchar(n);
