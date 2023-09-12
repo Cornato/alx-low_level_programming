@@ -10,7 +10,7 @@ void print_times_table(int n)
 	int num2;
 	int Result;
 
-	for (num1 = 0; num1 <= n; num1++)
+	while (num1 <= n)
 	{
 		for (num2 = 0; num2 <= n; num2++)
 		{
@@ -34,9 +34,8 @@ void print_times_table(int n)
 				_putchar(Result + '0');
 			}
 			else
-			{
 				_putchar(Result + '0');
-			}
+
 			if (num2 != n)
 			{
 				_putchar(',');
@@ -44,5 +43,6 @@ void print_times_table(int n)
 			}
 		}
 		_putchar('\n');
+		num1++;
 	}
 }
