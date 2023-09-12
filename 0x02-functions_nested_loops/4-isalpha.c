@@ -7,9 +7,9 @@
  *
  * Return: 1 if c lowercase else 0 otherwise
  */
-int _isalpha(int l, int u)
+int _isalpha(int l)
 {
-	if ((l >= 'a' && l <= 'z') || (u >= 'A' && u <= 'Z'))
+	if ((l >= 'a' && l <= 'z') || (l >= 'A' && l <= 'Z'))
 		return (1);
 	else
 		return (0);
