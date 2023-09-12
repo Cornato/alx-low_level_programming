@@ -13,6 +13,6 @@ int main(void)
 	{
 		_putchar(Content[i]);
 	}
-		
+
 	return (0);
 }
