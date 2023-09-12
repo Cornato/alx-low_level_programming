@@ -2,13 +2,13 @@
 
 /**
  * _abs - lowercase character
- * @n: The _abs to checked
+ * @n: _abs
  * Return: 1 if n greater than zero
  */
 int _abs(int n)
 {
 	if (n >= 0)
-		_putchar(n);
+		return (n);
 	else
-		_putchar(-n);
+		return (-n);
 }
