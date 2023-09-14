@@ -1,18 +1,18 @@
 #include "main.h"
-#include <stdio.h>
+
 /**
- * print_numbers - Print
- *
- * Return: 0
- */
+* print_numbers - print 0 - 9
+*
+* Return : Always 0 (success)
+*/
+
 void print_numbers(void)
 {
-	int m = 0;
+	int Conuter = 0;
 
-	while (m <= 9)
-	{
-		_putchar('0' + m);
-		m++;
-	}
+	do {
+	_putchar(Conuter + 48);
+	Conuter++;
+	} while (Conuter >= 0 && Conuter <= 9);
 	_putchar('\n');
 }
