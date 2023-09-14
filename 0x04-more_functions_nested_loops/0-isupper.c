@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _islower - lowercase character
- *  * @c: The loweer to checked
- * Return: 1 if c lowercase else 0 otherwise
+ * _isupper - UpperCase character
+ *  * @c: The Upercase true
+ * Return: 1 if c Upercase else 0
  */
 int _isupper(int c)
 {
