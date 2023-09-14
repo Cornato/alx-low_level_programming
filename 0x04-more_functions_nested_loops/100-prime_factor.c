@@ -13,20 +13,20 @@ int main(void)
 
 	while (Value % 2 == 0)
 	{
-	    factors = 2;
-	    Value /= 2;
+	factors = 2;
+	Value /= 2;
 	}
 	for (Counter = 3; Counter * Counter <= Value; Counter += 2)
 	{
-	    while (Value % Counter == 0)
-	    {
-		factors = Counter;
-		Value /= Counter;
-	    }
+	while (Value % Counter == 0)
+	{
+	factors = Counter;
+	Value /= Counter;
+	}
 	}
 	if (Value > 2)
 	{
-	    factors = Value;
+	factors = Value;
 	}
 	printf("%ld\n", factors);
 	return (0);
