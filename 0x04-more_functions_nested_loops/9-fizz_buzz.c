@@ -3,7 +3,7 @@
  * main - 100
  *
  * description: fizz
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
