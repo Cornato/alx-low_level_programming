@@ -11,8 +11,8 @@ void print_numbers(void)
 	int Conuter = 0;
 
 	do {
-	_putchar(Conuter + 48);
+	putchar(Conuter + 48);
 	Conuter++;
 	} while (Conuter >= 0 && Conuter <= 9);
-	_putchar('\n');
+	putchar('\n');
 }
