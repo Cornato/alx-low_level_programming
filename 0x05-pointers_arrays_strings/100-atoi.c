@@ -7,25 +7,32 @@
  */
 int _atoi(char *s)
 {
-	int num = 0;
-	int flag = 1;
-	int a;
+	int Value, i, newValue;
 
-	for (a = 0; s[a] != '\0'; ++a)
+	newValue = 1;
+
+	i = Value = 0;
+
+	while (((s[i] < '0') || s[i] > '9') && s[i] != 0)
 	{
-		if ((s[a] < '0' || s[a] > '9') && s[a] != '-')
+		if (s[i] == '-')
+			newValue = newValue * -1;
+		i++;
+	}
+
+	while (((s[i] >= '0') && s[i] <= '9') && s[i] != 0)
+	{
+		if (Value >= 0)
 		{
-			continue;
-		}
-		if (s[a] == '-')
-		{
-			flag *= -1;
+			Value = Value * 10 - (s[i] - '0');
+			i++;
 		}
 		else
 		{
-			num = num * 10 - (s[a] - '0');
+			Value = Value * 10 - (s[i] - '0');
+			i++;
 		}
 	}
-	flag *= -1;
-	return (num * flag);
+	newValue = newValue * -1;
+	return (Value * newValue);
 }
