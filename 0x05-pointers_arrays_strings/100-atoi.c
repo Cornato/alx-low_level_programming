@@ -5,7 +5,7 @@
  * @s: char pointer
  * Return: 0
  */
-int _atoi(char* s)
+int _atoi(char *s)
 {
 	int num = 0;
 	int flag = 1;
