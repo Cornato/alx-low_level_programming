@@ -13,7 +13,7 @@ int main(void)
 	srand(time(NULL));
 	while (Value <= 2772)
 	{
-		Letters = rand() % 72;
+		Letters = rand() % 78;
 		Value += Letters;
 		putchar(Letters);
 	}
