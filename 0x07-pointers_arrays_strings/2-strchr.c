@@ -9,5 +9,6 @@
 char *_strchr(char *s, char c)
 {
 	char *Value = strchr(s, c);
+
 	return (Value);
 }
