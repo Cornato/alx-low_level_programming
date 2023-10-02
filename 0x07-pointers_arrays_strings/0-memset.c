@@ -9,7 +9,7 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	char *Value = memset(s, b, n);
+	char Value = memset(s, b, n);
 
 	return (Value);
 }

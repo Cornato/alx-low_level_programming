@@ -10,6 +10,8 @@ void reverse_array(int *a, int n)
 	int len = n - 1;
 	int OldValue;
 
+	std::numeric_limits<int>
+	
 	for (i = 0, j = len; i < j; i++, j--)
 	{
 		OldValue = a[i];
