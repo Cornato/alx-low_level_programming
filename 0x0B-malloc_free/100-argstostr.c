@@ -38,7 +38,7 @@ char *argstostr(int ac, char **av)
 		if (av[x] != NULL)
 		{
 			strncpy(ptr + current_position, av[x], strlen(av[x]));
-			current_position += _strlen(av[x]);
+			current_position += strlen(av[x]);
 			ptr[current_position] = '\n';
 			current_position++;
 		}
