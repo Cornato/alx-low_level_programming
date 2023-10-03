@@ -8,7 +8,10 @@
 char *argstostr(int ac, char **av)
 {
 	char *ptr;
-	int length, i, main_pos, x = 0;
+	int current_position = 0;
+	int total_length = 0;
+	int i;
+	int x;
 
 	if (ac == 0 || av == NULL)
 	{
@@ -19,11 +22,11 @@ char *argstostr(int ac, char **av)
 	{
 		if (av[i] != NULL)
 		{
-			length += strlen(av[i]) + 1;
+			total_length += _strlen(av[i]) + 1;
 		}
 	}
 
-	ptr = malloc((length + 1) * sizeof(char));
+	ptr = malloc((total_length + 1) * sizeof(char));
 
 	if (ptr == NULL)
 	{
@@ -34,14 +37,14 @@ char *argstostr(int ac, char **av)
 	{
 		if (av[x] != NULL)
 		{
-			strncpy(ptr + main_pos, av[x], strlen(av[x]));
-			main_pos += strlen(av[x]);
-			ptr[main_pos] = '\n';
-			main_pos++;
+			_strncpy(ptr + current_position, av[x], _strlen(av[x]));
+			current_position += _strlen(av[x]);
+			ptr[current_position] = '\n';
+			current_position++;
 		}
 	}
 
-	ptr[main_pos] = '\0';
+	ptr[current_position] = '\0';
 
 	return (ptr);
 }
