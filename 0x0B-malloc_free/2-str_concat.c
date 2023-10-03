@@ -21,8 +21,8 @@ char *str_concat(char *s1, char *s2)
 		s2 = "";
 	}
 
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
+	len1 = strlen(s1);
+	len2 = strlen(s2);
 
 	ptr = malloc(sizeof(char) * (len1 + len2 + 1));
 
@@ -31,9 +31,9 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 	}
 
-	_strncat(ptr, s1, len1);
+	strncat(ptr, s1, len1);
 
-	_strncat(ptr, s2, len2);
+	strncat(ptr, s2, len2);
 
 	return (ptr);
 }
