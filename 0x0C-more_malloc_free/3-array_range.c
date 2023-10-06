@@ -3,7 +3,7 @@
  * array_range - array of integers
  * @min: type int
  * @max: type int
- * Return: null 
+ * Return: null
  */
 int *array_range(int min, int max)
 {

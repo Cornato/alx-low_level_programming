@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * string_nconcat - function that concatenates two strings
  * @s1: type char pointer
@@ -15,18 +14,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int x;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
-
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
 
 	len = strlen(s1);
-
-
 	p = malloc(sizeof(char) * (len + n + 1));
 
 	if (p == NULL)
@@ -48,6 +40,5 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	*(p + x) = '\0';
-
 	return (p);
 }
