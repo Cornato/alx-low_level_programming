@@ -1,8 +1,9 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * is_digit - check if digit or not
  * @c: type char
- * Return: true
+ * Return: true or false
  */
 int is_digit(char c)
 {
@@ -19,7 +20,7 @@ void print_error_and_exit(void)
 	exit(98);
 }
 /**
- * multiply - multiply
+ * multiply - multiply to 2 numbers
  * @num1: type char pointer
  * @num2: type char pointer
  * Return: 0
@@ -67,10 +68,10 @@ void multiply(char *num1, char *num2)
 	free(result);
 }
 /**
- * main - arguments received.
- * @argc: int
- * @argv: char
- * Return: 0
+ * main - prints all arguments received.
+ * @argc: type int argument
+ * @argv: type char argument of string.
+ * Return: if not receive 2 arg, rt error
  */
 int main(int argc, char *argv[])
 {
