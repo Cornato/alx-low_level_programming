@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ * _strlen - returns the length of a string
+ * @s: string s
+ * Return: length of string
+ */
+int _strlen(char *s)
+{
+	char *p = s;
+
+	while (*s)
+		s++;
+	return (s - p);
+}
+
+/**
  * _memset - fills memory with a constant byte.
  * @s: the memory area to be filled
  * @b: the constant byte
@@ -16,6 +30,43 @@ char *_memset(char *s, char b, unsigned int n)
 		*p++ = b;
 
 	return (s);
+}
+
+/**
+ * _calloc - allocates memory for an array
+ * @nmemb: number of elements
+ * @size: of each element
+ * Return: void *
+ */
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	void *ptr;
+
+	if (size == 0 || nmemb == 0)
+		return (NULL);
+
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+
+	_memset(ptr, 0, size * nmemb);
+
+	return (ptr);
+}
+
+/**
+ *_puts - prints a string, followed by a new line, to stdout.
+ * @str: the input string
+ * Return: nothing to return.
+ */
+void _puts(char *str)
+{
+	while (*str != 0)
+	{
+		_putchar(*str);
+		str++;
+	}
+	_putchar('\n');
 }
 
 /**
@@ -44,14 +95,14 @@ int strNumbers(char *str)
 void multiply(char *n1, char *n2)
 {
 	int idx, n1n, n2n, res, tmp, total;
-	int n1l = strlen(n1);
-	int n2l = strlen(n2);
+	int n1l = _strlen(n1);
+	int n2l = _strlen(n2);
 
 	int *ptr;
 
 	tmp = n2l;
 	total = n1l + n2l;
-	ptr = calloc(total, sizeof(int));
+	ptr = _calloc(total, sizeof(int));
 	for (n1l--; n1l >= 0; n1l--)
 	{
 		n1n = n1[n1l] - '0';
@@ -99,11 +150,11 @@ int main(int argc, char **argv)
 
 	if (argc != 3 || !strNumbers(nb1) || !strNumbers(nb2))
 	{
-		puts("Error");
+		_puts("Error");
 		exit(98);
 	}
 	if (*nb1 == '0' || *nb2 == '0')
-		puts("0");
+		_puts("0");
 	else
 	{
 		multiply(nb1, nb2);
