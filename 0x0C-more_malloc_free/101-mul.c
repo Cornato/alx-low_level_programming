@@ -1,104 +1,112 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
+
 /**
- * is_digit - check if digit or not
- * @c: type char
- * Return: true or false
+ * _memset - fills memory with a constant byte.
+ * @s: the memory area to be filled
+ * @b: the constant byte
+ * @n: number of bytes to fill with char b
+ * Return: a pointer to the memory area s.
  */
-int is_digit(char c)
+
+char *_memset(char *s, char b, unsigned int n)
 {
-	return (c >= '0' && c <= '9');
+	char *p = s;
+
+	for (; n; n--)
+		*p++ = b;
+
+	return (s);
 }
+
 /**
- * print_error_and_exit - exit out
- * @void: void
+ * strNumbers - determines if string has only numbers
+ * @str: input string
+ * Return: 0 if false, 1 if true
+ */
+int strNumbers(char *str)
+{
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+/**
+ * multiply - multiplies two numbers (in string), and prints the result.
+ * @n1: first number
+ * @n2: second number
+ * Return: void
+ */
+
+void multiply(char *n1, char *n2)
+{
+	int idx, n1n, n2n, res, tmp, total;
+	int n1l = strlen(n1);
+	int n2l = strlen(n2);
+
+	int *ptr;
+
+	tmp = n2l;
+	total = n1l + n2l;
+	ptr = calloc(total, sizeof(int));
+	for (n1l--; n1l >= 0; n1l--)
+	{
+		n1n = n1[n1l] - '0';
+		res = 0;
+		n2l = tmp;
+		for (n2l--; n2l >= 0; n2l--)
+		{
+			n2n = n2[n2l] - '0';
+			res += ptr[n1l + n2l + 1] + (n1n * n2n);
+			ptr[n1l + n2l + 1] = res % 10;
+			res /= 10;
+		}
+		if (res)
+		{
+			ptr[n1l + n2l + 1] = res % 10;
+		}
+	}
+	res = 0;
+	for (idx = 0; idx < total; idx++)
+	{
+		if (ptr[idx] == 0 && res == 1)
+			_putchar(ptr[idx] + '0');
+		else if (ptr[idx] > 0)
+		{
+			_putchar(ptr[idx] + '0');
+			res = 1;
+		}
+	}
+	_putchar('\n');
+	free(ptr);
+}
+
+/**
+ * main - adds positive numbers.
+ * @argc: the number of arguments
+ * @argv: the arguments
+ *
  * Return: 0
  */
-void print_error_and_exit(void)
+
+int main(int argc, char **argv)
 {
-	printf("Error\n");
-	exit(98);
-}
-/**
- * multiply - multiply to 2 numbers
- * @num1: type char pointer
- * @num2: type char pointer
- * Return: 0
- */
-void multiply(char *num1, char *num2)
-{
-	int len1 = 0, len2 = 0;
-	int *result;
-	int i, j, carry, product;
-	int printed = 0;
+	char *nb1 = argv[1];
+	char *nb2 = argv[2];
 
-	while (num1[len1] != '\0')
-		len1++;
-	while (num2[len2] != '\0')
-		len2++;
-
-	result = (int *)malloc(sizeof(int) * (len1 + len2));
-	if (result == NULL)
-		print_error_and_exit();
-	for (i = 0; i < len1 + len2; i++)
-		result[i] = 0;
-
-	for (i = len1 - 1; i >= 0; i--)
+	if (argc != 3 || !strNumbers(nb1) || !strNumbers(nb2))
 	{
-		carry = 0;
-		for (j = len2 - 1; j >= 0; j--)
-		{
-			product = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1] + carry;
-			result[i + j + 1] = product % 10;
-			carry = product / 10;
-		}
-		result[i + j + 1] = carry;
+		puts("Error");
+		exit(98);
 	}
-
-	for (i = 0; i < len1 + len2; i++)
+	if (*nb1 == '0' || *nb2 == '0')
+		puts("0");
+	else
 	{
-		if (result[i] != 0 || printed)
-		{
-			printf("%d", result[i]);
-			printed = 1;
-		}
+		multiply(nb1, nb2);
 	}
-
-	printf("\n");
-	free(result);
-}
-/**
- * main - prints all arguments received.
- * @argc: type int argument
- * @argv: type char argument of string.
- * Return: if not receive 2 arg, rt error
- */
-int main(int argc, char *argv[])
-{
-	int i, x;
-
-	if (argc != 3)
-	{
-		print_error_and_exit();
-	}
-
-	for (i = 0; argv[1][i] != '\0'; i++)
-	{
-		if (!is_digit(argv[1][i]))
-		{
-			print_error_and_exit();
-		}
-	}
-
-	for (x = 0; argv[2][x] != '\0'; x++)
-	{
-		if (!is_digit(argv[2][x]))
-		{
-			print_error_and_exit();
-		}
-	}
-
-	multiply(argv[1], argv[2]);
-
 	return (0);
 }
