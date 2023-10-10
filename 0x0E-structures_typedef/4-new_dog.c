@@ -1,6 +1,10 @@
 #include "dog.h"
 #include <string.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <stdbool.h>
 #include <stdlib.h>
+#include <limits.h>
 /**
  * new_dog - create new dog
  * @name: type char pointer
@@ -12,9 +16,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dogsturct;
 
-	if (owner == NULL || name == NULL || age < 0)
+	if (name == NULL || age < 0 || owner == NULL)
 		return (NULL);
-		dog_t *dogsturct;
+
 	dogsturct = malloc(sizeof(dog_t));
 	if (dogsturct == NULL)
 	{
@@ -34,7 +38,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dogsturct);
 		return (NULL);
 	}
-	dogsturct->name = _strncpy(dogsturct->name, name);
+	dogsturct->name = name;
 	dogsturct->age = age;
 	dogsturct->owner = owner;
 	return (dogsturct);
