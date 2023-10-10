@@ -38,8 +38,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dogsturct);
 		return (NULL);
 	}
-	dogsturct->name = strncpy(dogsturct->name, name, strlen(name));
+	dogsturct->name = strncpy(dogsturct->name, name, strlen(name) + 1);
 	dogsturct->age = age;
-	dogsturct->owner = strncpy(dogsturct->owner, owner, strlen(owner));
+	dogsturct->owner = strncpy(dogsturct->owner, owner, strlen(owner) + 1);
 	return (dogsturct);
 }
