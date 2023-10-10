@@ -6,17 +6,17 @@
 #include <stdlib.h>
 #include <limits.h>
 /**
- * new_dog - create new dog
- * @name: type char pointer
- * @age: type float
- * @owner: type char pointer
- * Return: new struct dog else null
+ * new_dog - dog
+ * @name: pointer
+ * @age: float
+ * @owner:  pointer
+ * Return: null
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dogsturct;
 
-	if (name == NULL || age < 0 || owner == NULL)
+	if (age < 0 || owner == NULL || name == NULL)
 		return (NULL);
 
 	dogsturct = malloc(sizeof(dog_t));
