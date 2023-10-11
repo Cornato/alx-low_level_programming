@@ -2,13 +2,13 @@
 /**
  * print_name - name
  * @name: char pointer
- * @f: char
+ * @f: char arg
  */
 void print_name(char *name, void (*f)(char *))
 {
-	if (f == NULL)
+	if (f == NULL || name == NULL)
 	{
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	f(name);
