@@ -1,5 +1,11 @@
 {
 	"files.associations": {
-		"main.h": "c"
+		"main.h": "c",
+		"typeinfo": "c",
+		"stdio.h": "c",
+		"dog.h": "c",
+		"function_pointers.h": "c",
+		"stdlib.h": "c",
+		"3-calc.h": "c"
 	}
 }
