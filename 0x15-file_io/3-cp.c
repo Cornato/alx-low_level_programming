@@ -33,13 +33,14 @@ void HandleException(int fileName, int to_fileName, char *argv[])
 void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
-	char *buffer[2048];
+	char *buffer[1024];
 	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
 	toFile = open(to_fileName, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
 
 	HandleException(fromFile, toFile, argv);
+
 
 	while ((readByteSize = read(fromFile, buffer, 1024)) > 0)
 	{
