@@ -30,8 +30,6 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 	byteSize = read(fromFile, buffer, 1024);
 	byteSize = write(toFile, buffer, byteSize);
 
-	if (byteSize == -1)
-
 	if (close(fromFile) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fromFile);
