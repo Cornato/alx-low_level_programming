@@ -33,7 +33,7 @@ void HandleException(int fileName, int to_fileName, char *argv[])
 void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
-	char *buffer;
+	char *buffer[2048];
 	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
@@ -41,13 +41,13 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 
 	HandleException(fromFile, toFile, argv);
 
-	buffer = malloc(sizeof(char*) * 1024);
+	while ((readByteSize = read(fromFile, buffer, 1024)) > 0)
+	{
+		writeByteSize = write(toFile, buffer, readByteSize);
 
-	readByteSize = read(fromFile, buffer, 1024);
-	writeByteSize = write(toFile, buffer, readByteSize);
-
-	if (writeByteSize == -1)
-		HandleException(0, -1, argv);
+		if (writeByteSize == -1)
+			HandleException(0, -1, argv);
+	}
 
 	if (readByteSize == -1)
 		HandleException(-1, 0, argv);
@@ -62,7 +62,6 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", toFile);
 		exit(99);
 	}
-	free(buffer);
 }
 
 /**
