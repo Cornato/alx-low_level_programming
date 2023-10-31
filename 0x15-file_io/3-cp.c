@@ -33,7 +33,7 @@ void HandleException(int fileName, int to_fileName, char *argv[])
 void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
-	char *buffer[BUFFER_SIZE];
+	char buffer[BUFFER_SIZE];
 	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
