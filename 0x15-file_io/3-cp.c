@@ -1,6 +1,28 @@
 #include "main.h"
 
 /**
+ * HandleException - text
+ * @fileName: file name
+ * @to_fileName: text_content
+ * @argv: text_content
+ * Return: true
+ */
+
+void HandleException(int fileName, int to_fileName, char *argv[])
+{
+	if (fileName == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (to_fileName == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+}
+
+/**
  * copyFile - text
  * @fileName: file name
  * @to_fileName: text_content
@@ -15,31 +37,18 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
-	if (fromFile == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	toFile = open(to_fileName, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
-	if (toFile == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+
+	HandleException(fromFile, toFile, argv);
 
 	readByteSize = read(fromFile, buffer, 1024);
 	writeByteSize = write(toFile, buffer, readByteSize);
 
-	if (readByteSize == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	if (writeByteSize == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+		HandleException(0, -1, argv);
+
+	if (readByteSize == -1)
+		HandleException(-1, 0, argv);
 
 	if (close(fromFile) == -1)
 	{
@@ -51,7 +60,6 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", toFile);
 		exit(99);
 	}
-
 }
 
 /**
