@@ -60,7 +60,7 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 	if (close(toFile) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", toFile);
-		exit(99);
+		exit(100);
 	}
 }
 
