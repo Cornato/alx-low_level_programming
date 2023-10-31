@@ -12,7 +12,7 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
 	char *buffer[1024];
-	ssize_t byteSize;
+	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
 	if (fromFile == -1)
@@ -27,8 +27,19 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 		exit(99);
 	}
 
-	byteSize = read(fromFile, buffer, 1024);
-	byteSize = write(toFile, buffer, byteSize);
+	readByteSize = read(fromFile, buffer, 1024);
+	writeByteSize = write(toFile, buffer, readByteSize);
+
+	if (readByteSize == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (writeByteSize == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
 
 	if (close(fromFile) == -1)
 	{
