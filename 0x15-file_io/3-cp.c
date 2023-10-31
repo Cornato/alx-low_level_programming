@@ -11,7 +11,7 @@
 void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
-	char *buffer[2048];
+	char *buffer[1024];
 	ssize_t byteSize;
 
 	fromFile = open(fileName, O_RDONLY);
@@ -27,8 +27,10 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 		exit(99);
 	}
 
-	byteSize = read(fromFile, buffer, 2048);
+	byteSize = read(fromFile, buffer, 1024);
 	byteSize = write(toFile, buffer, byteSize);
+
+	if (byteSize == -1)
 
 	if (close(fromFile) == -1)
 	{
