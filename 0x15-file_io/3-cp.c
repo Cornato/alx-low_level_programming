@@ -1,5 +1,5 @@
 #include "main.h"
-
+#define BUFFER_SIZE 1024
 /**
  * HandleException - text
  * @fileName: file name
@@ -33,7 +33,7 @@ void HandleException(int fileName, int to_fileName, char *argv[])
 void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 {
 	int fromFile, toFile;
-	char *buffer[1024];
+	char *buffer[BUFFER_SIZE];
 	ssize_t readByteSize, writeByteSize;
 
 	fromFile = open(fileName, O_RDONLY);
@@ -41,8 +41,7 @@ void copyFile(const char *fileName, const char *to_fileName, char *argv[])
 
 	HandleException(fromFile, toFile, argv);
 
-
-	while ((readByteSize = read(fromFile, buffer, 1024)) > 0)
+	while ((readByteSize = read(fromFile, buffer, BUFFER_SIZE)) > 0)
 	{
 		writeByteSize = write(toFile, buffer, readByteSize);
 
