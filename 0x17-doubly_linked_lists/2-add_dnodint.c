@@ -1,32 +1,31 @@
 #include "lists.h"
 /**
- * add_dnodeint - add_dnodeint
- * @head: linked list
- * @n: linked list
- * Return: list
+ * add_dnodeint - function that adds a new node at the beginning
+ * @head: the linked list that need print his elements
+ * @n: the linked list that need print his elements
+ * Return: the new node that add of begin of the node
  */
-
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *begin;
+	dlistint_t *nn_begin;
 
-	begin = malloc(sizeof(dlistint_t));
+	nn_begin = malloc(sizeof(dlistint_t));
 
-	if (begin == NULL)
+	if (nn_begin == NULL)
 	{
 		return (NULL);
 	}
 
-	begin->n = n;
-	begin->next = *head;
-	begin->prev = NULL;
+	nn_begin->n = n;
+	nn_begin->next = *head;
+	nn_begin->prev = NULL;
 
 	if (*head != NULL)
 	{
-		(*head)->prev = begin;
+		(*head)->prev = nn_begin;
 	}
 
-	*head = begin;
+	*head = nn_begin;
 
-	return (begin);
+	return (nn_begin);
 }
