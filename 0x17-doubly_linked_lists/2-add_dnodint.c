@@ -1,7 +1,8 @@
 #include "lists.h"
 /**
- * dlistint_len - dlistint_len
- * @h: linked list
+ * add_dnodeint - add_dnodeint
+ * @head: linked list
+ * @n: linked list
  * Return: list
  */
 
