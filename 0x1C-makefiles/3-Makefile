@@ -1,0 +1,21 @@
+.PHONY: all
+CC = gcc
+SRC = school.c main.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+RM = rm -f
+
+all: ${OBJ}
+	@echo "7spy Allah"
+	${CC} ${SRC} -o ${NAME}
+
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+	$(RM) $(NAME)
+
+re: fclean all
